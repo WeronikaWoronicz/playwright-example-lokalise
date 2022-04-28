@@ -17,6 +17,7 @@ test.afterAll(async ({ page }) => {
   while (
     await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
   ) {
+    await page.click('[aria-label="More\\.\\.\\."] >> nth=0')
     await page
       .locator('[role=menuitem][aria-label="Settings"]')
       .first()
@@ -43,6 +44,7 @@ test.describe("Adding Project", () => {
     await page.locator("#react-select-3-input").fill("Spanish (es)")
     await page.locator("#react-select-3-input").press("Enter")
     await page.locator('button:visible:has-text("Proceed")').click()
+    await page.click('[aria-label="Close dialog"]')
   })
 
   test("nth project should be added", async ({ page }) => {
@@ -56,8 +58,8 @@ test.describe("Adding Project", () => {
       .fill(secondProjectName)
     await page.locator("#react-select-3-input").fill("Spanish (es)")
     await page.locator("#react-select-3-input").press("Enter")
-    await Promise.then([
-      page.waitForNavigation(/*{ url: 'https://app.stage.lokalise.cloud/upload/65231021626468195a3101.78837358/' }*/),
+    await Promise.all([
+      page.waitForNavigation(),
       page.locator('button:visible:has-text("Proceed")').click(),
     ])
   })
