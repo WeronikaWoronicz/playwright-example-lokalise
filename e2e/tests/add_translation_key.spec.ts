@@ -111,9 +111,7 @@ test.describe("Add key", () => {
     await page.locator('button:visible:has-text("Proceed")').click()
     await page.locator(`a:text("${project.name}")`).isVisible()
     await page.click('[aria-label="Close dialog"]')
-    await page.waitForNavigation()
-    await page.isVisible('[aria-label="Close dialog"]') ? await page.click('[aria-label="Close dialog"]') : 
-    await page.waitForNavigation()
+    await page.click('[aria-label="Close dialog"]')
     await page.click('[data-testid="edit"]')
     await page.locator('[aria-label="Add first key"]').click()
     await page.locator("#keyName").fill("The End")
@@ -125,6 +123,11 @@ test.describe("Add key", () => {
         '[class="bootstrap-switch-handle-off bootstrap-switch-default"] >> nth=3'
       )
       .click()
-      await page.click("#btn_addkey")
+    await page.click("#btn_addkey")
+    let dataId = await page
+    .locator("tr.row-trans.translation:nth-child(1)")
+    .getAttribute("data-id")
+    await page.click('[data-lokalise-editor-plural="one"] >> nth=0')
+    await page.type('[class="CodeMirror-line"]', 'Cat')
   })
 })
