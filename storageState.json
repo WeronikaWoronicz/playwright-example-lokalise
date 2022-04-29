@@ -3,30 +3,50 @@
     {
       "sameSite": "Lax",
       "name": "_gcl_au",
-      "value": "1.1.615535003.1651190019",
+      "value": "1.1.1509222160.1651195666",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1658966018,
+      "expires": 1658971665,
       "httpOnly": false,
       "secure": false
     },
     {
+      "sameSite": "None",
+      "name": "personalization_id",
+      "value": "\"v1_6KOoYVCTk/KqZhvUl+vu4w==\"",
+      "domain": ".twitter.com",
+      "path": "/",
+      "expires": 1714267666.303129,
+      "httpOnly": false,
+      "secure": true
+    },
+    {
+      "sameSite": "None",
+      "name": "muc_ads",
+      "value": "39b6c046-3294-4602-8d51-bfd6d299e5d1",
+      "domain": ".t.co",
+      "path": "/",
+      "expires": 1714267666.313894,
+      "httpOnly": false,
+      "secure": true
+    },
+    {
       "sameSite": "Lax",
       "name": "_gid",
-      "value": "GA1.2.871251632.1651190019",
+      "value": "GA1.2.780187790.1651195666",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1651276421,
+      "expires": 1651282068,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_ga_cid",
-      "value": "245070236.1651190019",
+      "value": "1336643917.1651195666",
       "domain": ".app.stage.lokalise.cloud",
       "path": "/",
-      "expires": 1682294021,
+      "expires": 1682299668,
       "httpOnly": false,
       "secure": true
     },
@@ -36,117 +56,97 @@
       "value": "1",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1651190079,
+      "expires": 1651195726,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "None",
       "name": "MUID",
-      "value": "20174B197E9C6350271C5A8D7FF762DC",
+      "value": "04BDF7EBF04C6E591275E67EF13B6FFA",
       "domain": ".bing.com",
       "path": "/",
-      "expires": 1684886020.507524,
+      "expires": 1684891666.388582,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "Lax",
-      "name": "_lfa",
-      "value": "LF1.1.37466798dcd387d5.1651190019512",
+      "name": "_fbp",
+      "value": "fb.1.1651195666421.217394543",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1714262021,
+      "expires": 1658971668,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Lax",
+      "name": "_lfa",
+      "value": "LF1.1.df195498e770b4d9.1651195666430",
+      "domain": ".lokalise.cloud",
+      "path": "/",
+      "expires": 1714267668,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Strict",
       "name": "_rdt_uuid",
-      "value": "1651190019546.9e596f52-4c01-4f73-9d5d-2c65151a507f",
+      "value": "1651195666459.411d58ab-82ba-4e9b-94b6-e02e78f707b3",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1658966021,
+      "expires": 1658971668,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "None",
       "name": "_session_id",
-      "value": "a864c551ab43c76015639c4d477d26c2",
+      "value": "a245ea68488aab06e190e35634ef420e",
       "domain": "tracking.g2crowd.com",
       "path": "/",
-      "expires": 1652399621.600812,
+      "expires": 1652405268.691213,
       "httpOnly": true,
       "secure": true
     },
     {
       "sameSite": "None",
       "name": "__cf_bm",
-      "value": "gBehQEBh_CzBSqVsy85glMUjo3gqJRzaMF3LOvTiN_c-1651190019-0-AVwN8gE+Cq/awio7eozU5s7A5EAUDJSRCtK31i4SH9K65EIVJP3kFrFvdc4TNG+W7V5+u/dYGKvgECpAXN31Gqg=",
+      "value": "aIBr0X6_tRj7e8sfCqnWg0ECTetFIgZfhNwomeD7ZLk-1651195666-0-AYYWSMrd71+Z/BoX9qa7FgUR9mXOtT9Op5bk6Wkqx/XxzIHw5iOfW4MxDj775K9wynlTQUUwsrIAvGVDv8Iz5rk=",
       "domain": ".g2crowd.com",
       "path": "/",
-      "expires": 1651191819.580018,
+      "expires": 1651197466.476241,
       "httpOnly": true,
       "secure": true
     },
     {
       "sameSite": "Lax",
-      "name": "_fbp",
-      "value": "fb.1.1651190019632.1860275969",
-      "domain": ".lokalise.cloud",
-      "path": "/",
-      "expires": 1658966022,
-      "httpOnly": false,
-      "secure": false
-    },
-    {
-      "sameSite": "None",
-      "name": "personalization_id",
-      "value": "\"v1_YyANT18j58ayU3LB9tz71A==\"",
-      "domain": ".twitter.com",
-      "path": "/",
-      "expires": 1714262019.673407,
-      "httpOnly": false,
-      "secure": true
-    },
-    {
-      "sameSite": "None",
-      "name": "muc_ads",
-      "value": "1c38ce5d-3c33-4143-929d-58a1dcedb5c7",
-      "domain": ".t.co",
-      "path": "/",
-      "expires": 1714262019.687032,
-      "httpOnly": false,
-      "secure": true
-    },
-    {
-      "sameSite": "Lax",
       "name": "_hp2_ses_props.895908783",
-      "value": "%7B%22ts%22%3A1651190018738%2C%22d%22%3A%22app.stage.lokalise.cloud%22%2C%22h%22%3A%22%2Flogin%22%2C%22q%22%3A%22%3Ffrom%3D%2Fprojects%22%7D",
+      "value": "%7B%22ts%22%3A1651195665717%2C%22d%22%3A%22app.stage.lokalise.cloud%22%2C%22h%22%3A%22%2Flogin%22%2C%22q%22%3A%22%3Ffrom%3D%2Fprojects%22%7D",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1651191822,
+      "expires": 1651197469,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "None",
       "name": "UserMatchHistory",
-      "value": "AQL0mQCwwZpLUAAAAYBymDYOOgivCnnl2BrFm-inB2Xpd14NpvThA5w59HDBPxxkLjBAl1JX_zdNKQ",
+      "value": "AQIosOlYqYV2YQAAAYBy7mAVUtwagU_Z38Wyd_zsuU6NQSdLHB-QzFgcvHbvXaXPYuhUkUd1Y3UqTg",
       "domain": ".linkedin.com",
       "path": "/",
-      "expires": 1653782020.166614,
+      "expires": 1653787666.887487,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "None",
       "name": "AnalyticsSyncHistory",
-      "value": "AQK17ewtlTctUgAAAYBymDYOV2TljCoPBTxcHz6TVyVqKkYH13C_zDDswp7fbsetwQR2nL5uPmpE0UaJ2kwqhA",
+      "value": "AQLmcBM-7Xe5hwAAAYBy7mAV4qowU9wliKFRI7aDWOBiPJjz3RqYBMAZfsvxnUKmH8n5FGXe-yEvZs0g8Dnz3g",
       "domain": ".linkedin.com",
       "path": "/",
-      "expires": 1653782020.166654,
+      "expires": 1653787666.887543,
       "httpOnly": false,
       "secure": true
     },
@@ -163,20 +163,20 @@
     {
       "sameSite": "None",
       "name": "bcookie",
-      "value": "\"v=2&c41a2fa4-d32a-44e0-8d0c-e850e9087d34\"",
+      "value": "\"v=2&48f58ecf-c47b-4c7c-8b15-35eeb58bfe84\"",
       "domain": ".linkedin.com",
       "path": "/",
-      "expires": 1714303872.166688,
+      "expires": 1714309518.887578,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "None",
       "name": "lidc",
-      "value": "\"b=VGST02:s=V:r=V:a=V:p=V:g=2598:u=1:x=1:i=1651190019:t=1651276419:v=2:sig=AQHuJfVLlHem0scnGRxHC9BNzc-GvZm_\"",
+      "value": "\"b=VGST02:s=V:r=V:a=V:p=V:g=2600:u=1:x=1:i=1651195666:t=1651282066:v=2:sig=AQFs7sp1ljMQ0XZzRJiNL0gwjW5r_mnJ\"",
       "domain": ".linkedin.com",
       "path": "/",
-      "expires": 1651276420.166715,
+      "expires": 1651282066.887603,
       "httpOnly": false,
       "secure": true
     },
@@ -193,60 +193,60 @@
     {
       "sameSite": "None",
       "name": "bscookie",
-      "value": "\"v=1&2022042823533951faee7f-8dd3-48c7-8c28-665e1031d05dAQF7W5XcXWVNyVGsBih7SAKcPD0l0Vu6\"",
+      "value": "\"v=1&202204290127469d1a6ee2-00c8-4a5d-888d-0ec3ede3c270AQGaK2GcbNXJroybXudgf2HcdjC35_MY\"",
       "domain": ".www.linkedin.com",
       "path": "/",
-      "expires": 1714303872.329373,
+      "expires": 1714309519.055073,
       "httpOnly": true,
       "secure": true
     },
     {
       "sameSite": "None",
       "name": "li_gc",
-      "value": "MTswOzE2NTExOTAwMTk7MjswMjFPjlyox97Xoed9QEjul+Sk/GfNGf2d1TyDRSp0SipU9g==",
+      "value": "MTswOzE2NTExOTU2NjY7MjswMjGBocJRM+JIuD4e5nyMbywacO/Uhf59yGej4NZSCLAIkA==",
       "domain": ".linkedin.com",
       "path": "/",
-      "expires": 1713568951.329426,
+      "expires": 1713563756.055105,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "Lax",
       "name": "_clck",
-      "value": "lm9cpq|1|f10|0",
+      "value": "92t3kg|1|f11|0",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1682726020,
+      "expires": 1682731667,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "None",
       "name": "SRM_B",
-      "value": "20174B197E9C6350271C5A8D7FF762DC",
+      "value": "04BDF7EBF04C6E591275E67EF13B6FFA",
       "domain": ".c.bing.com",
       "path": "/",
-      "expires": 1684886021.830136,
+      "expires": 1684891668.67445,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "Lax",
       "name": "PHPSESSID",
-      "value": "cc4d005258b737aaf73906c71fcc3851",
+      "value": "cf9185926965940595fbd68d779e4940",
       "domain": "app.stage.lokalise.cloud",
       "path": "/",
-      "expires": 1656374020.896766,
+      "expires": 1656379667.743862,
       "httpOnly": true,
       "secure": true
     },
     {
       "sameSite": "Lax",
       "name": "Lokalise",
-      "value": "bbf8f657366ae86e9be416199d9e3a86d3a93f3933986158621",
+      "value": "cb1cea3a7058ddc2321a02ded5cdcc4f0633f04229807158621",
       "domain": "app.stage.lokalise.cloud",
       "path": "/",
-      "expires": 1656374021.147535,
+      "expires": 1656379667.972865,
       "httpOnly": true,
       "secure": true
     },
@@ -256,14 +256,14 @@
       "value": "0",
       "domain": "app.stage.lokalise.cloud",
       "path": "/",
-      "expires": 1656374020.89686,
+      "expires": 1656379667.743942,
       "httpOnly": false,
       "secure": true
     },
     {
       "sameSite": "Lax",
       "name": "csrf_token",
-      "value": "H-6Sg32mwiuH_AEVZMRSs3ZpoyDKYjQX2sGrwnWIJ6Y",
+      "value": "3Om7QIoUt7QQGGCUfAd1svvqHYvhWqX17mnGoQRdnT0",
       "domain": "app.stage.lokalise.cloud",
       "path": "/",
       "expires": -1,
@@ -283,10 +283,10 @@
     {
       "sameSite": "None",
       "name": "MUID",
-      "value": "20174B197E9C6350271C5A8D7FF762DC",
+      "value": "04BDF7EBF04C6E591275E67EF13B6FFA",
       "domain": ".clarity.ms",
       "path": "/",
-      "expires": 1684886020.925921,
+      "expires": 1684891667.753464,
       "httpOnly": false,
       "secure": true
     },
@@ -296,87 +296,87 @@
       "value": "0",
       "domain": ".c.clarity.ms",
       "path": "/",
-      "expires": 1651190620.925957,
+      "expires": 1651196267.753505,
       "httpOnly": false,
+      "secure": true
+    },
+    {
+      "sameSite": "None",
+      "name": "IDE",
+      "value": "AHWqTUlpzrWq8SPWJJJxpA-6Ja-hYEOH4azJOstIk2WDmvI527GV6FmBZkVO3eUT",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1684891668.363115,
+      "httpOnly": true,
       "secure": true
     },
     {
       "sameSite": "Lax",
       "name": "_ga_1JRZETG1RY",
-      "value": "GS1.1.1651190018.1.1.1651190021.0",
+      "value": "GS1.1.1651195665.1.1.1651195668.0",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1714262021,
+      "expires": 1714267668,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_ga",
-      "value": "GA1.1.245070236.1651190019",
+      "value": "GA1.1.1336643917.1651195666",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1714262021,
-      "httpOnly": false,
-      "secure": false
-    },
-    {
-      "sameSite": "None",
-      "name": "IDE",
-      "value": "AHWqTUlP1PSObcnqF8pHTwSrfLvqMA2ENWbEISMYTm3iEc9atXN_0dZ-2_F99IpG",
-      "domain": ".doubleclick.net",
-      "path": "/",
-      "expires": 1684886021.660631,
-      "httpOnly": true,
-      "secure": true
-    },
-    {
-      "sameSite": "Strict",
-      "name": "_dd_s",
-      "value": "rum=2&id=80140e0c-730e-4ecd-a4cb-b9e61165d279&created=1651190018379&expire=1651190921206",
-      "domain": "app.stage.lokalise.cloud",
-      "path": "/",
-      "expires": 1651190922,
+      "expires": 1714267668,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_uetsid",
-      "value": "6d3692e0c74e11ec8f636fd3f43091f1",
+      "value": "930a0050c75b11ecbb51cd5185127e38",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1651276422,
+      "expires": 1651282069,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_uetvid",
-      "value": "6d370120c74e11ec879a53e7e2683b85",
+      "value": "930a5b20c75b11ecb10c63e77c0d0017",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1684886022,
+      "expires": 1684891669,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_hp2_id.895908783",
-      "value": "%7B%22userId%22%3A%222266906180050943%22%2C%22pageviewId%22%3A%222085313545051737%22%2C%22sessionId%22%3A%224397619551285087%22%2C%22identity%22%3A%22158621%22%2C%22trackerVersion%22%3A%224.0%22%2C%22identityField%22%3Anull%2C%22isIdentified%22%3A1%7D",
+      "value": "%7B%22userId%22%3A%221038763606407043%22%2C%22pageviewId%22%3A%226813617881189932%22%2C%22sessionId%22%3A%221332443951434803%22%2C%22identity%22%3A%22158621%22%2C%22trackerVersion%22%3A%224.0%22%2C%22identityField%22%3Anull%2C%22isIdentified%22%3A1%7D",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1685267622,
+      "expires": 1685273269,
       "httpOnly": false,
       "secure": false
     },
     {
       "sameSite": "Lax",
       "name": "_clsk",
-      "value": "1mv04ox|1651190022737|2|1|d.clarity.ms/collect",
+      "value": "18m77w5|1651195669921|2|1|f.clarity.ms/collect",
       "domain": ".lokalise.cloud",
       "path": "/",
-      "expires": 1651276422,
+      "expires": 1651282069,
+      "httpOnly": false,
+      "secure": false
+    },
+    {
+      "sameSite": "Strict",
+      "name": "_dd_s",
+      "value": "rum=2&id=c266fe57-831a-4721-87c2-e703f44b3cfe&created=1651195665218&expire=1651196568032",
+      "domain": "app.stage.lokalise.cloud",
+      "path": "/",
+      "expires": 1651196570,
       "httpOnly": false,
       "secure": false
     }
@@ -387,7 +387,7 @@
       "localStorage": [
         {
           "name": "bugsnag-anonymous-id",
-          "value": "cl2jnwmf400003f66pavb36fx"
+          "value": "cl2jr9njt00003f66qo9oeasr"
         },
         {
           "name": "userpilotUserId",
@@ -395,7 +395,7 @@
         },
         {
           "name": "_lfa",
-          "value": "LF1.1.37466798dcd387d5.1651190019512"
+          "value": "LF1.1.df195498e770b4d9.1651195666430"
         },
         {
           "name": "userpilotIdentifiedObj",
@@ -403,11 +403,11 @@
         },
         {
           "name": "_lfa_expiry",
-          "value": "2024-04-27T23:53:41.504Z"
+          "value": "2024-04-28T01:27:48.312Z"
         },
         {
           "name": "_uetsid_exp",
-          "value": "Fri, 29 Apr 2022 23:53:42 GMT"
+          "value": "Sat, 30 Apr 2022 01:27:49 GMT"
         },
         {
           "name": "intercom.intercom-state-sh2xr3cm",
@@ -415,11 +415,11 @@
         },
         {
           "name": "_uetvid",
-          "value": "6d370120c74e11ec879a53e7e2683b85"
+          "value": "930a5b20c75b11ecb10c63e77c0d0017"
         },
         {
           "name": "_uetvid_exp",
-          "value": "Tue, 23 May 2023 23:53:42 GMT"
+          "value": "Wed, 24 May 2023 01:27:49 GMT"
         },
         {
           "name": "userpilotSDK",
@@ -427,7 +427,7 @@
         },
         {
           "name": "_uetsid",
-          "value": "6d3692e0c74e11ec8f636fd3f43091f1"
+          "value": "930a0050c75b11ecbb51cd5185127e38"
         }
       ]
     }

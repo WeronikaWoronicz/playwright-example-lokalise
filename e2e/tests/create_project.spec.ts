@@ -3,16 +3,13 @@ import { faker } from "@faker-js/faker"
 
 
 test.beforeEach(async ({ page }) => {
-  await Promise.all([
-    await page.goto("https://app.stage.lokalise.cloud/projects"),
-    page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects' })
-  ])
+  await page.goto("https://app.stage.lokalise.cloud/projects")
 })
 
 test.afterAll(async ({ page }) => {
   await Promise.all([
     page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects' }),
-    page.locator("text=Projects").click(),
+    page.locator('a:text("Projects")').click()
   ])
   while (
     await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
