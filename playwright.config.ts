@@ -26,7 +26,7 @@ const config: PlaywrightTestConfig = {
     trace: "on-first-retry",
   },
   /* Maximum time one test can run for. */
-  timeout: 30 * 1000,
+  timeout: 50 * 1000,
   expect: {
     /**
      * Maximum time expect() should wait for the condition to be met.

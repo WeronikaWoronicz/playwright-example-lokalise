@@ -1,26 +1,12 @@
-import { test, expect, Page } from "@playwright/test"
+import { test, expect} from "@playwright/test"
 import { project } from "../fixtures/project"
+import {Projects} from "../pages/Projects/Projects"
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("https://app.stage.lokalise.cloud/projects")
-  while (
-    await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
-  ) {
-    await page.click('[aria-label="More\\.\\.\\."] >> nth=0')
-    await page
-      .locator('[role=menuitem][aria-label="Settings"]')
-      .first()
-      .click()
-    const projectName = await page
-      .locator('[placeholder="Project name"]')
-      .inputValue()
-    await page.locator("text=Delete project").click()
-    await page.locator(".bootbox-input").fill(projectName)
-    await Promise.all([
-      page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects/' }),
-      page.locator('button:has-text("Delete project")').click(),
-    ])
-  }
+  const projects = new Projects(page)
+
+  await projects.navigate()
+  await projects.removeAllProjects()
   await page.locator("text=Create project").click()
   await page
     .locator('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]')
@@ -35,28 +21,13 @@ test.beforeEach(async ({ page }) => {
 })
 
 test.afterAll(async ({ page }) => {
+  const projects = new Projects(page)
+  
   await Promise.all([
     page.waitForNavigation(),
     page.locator('a:text("Projects")').click(),
   ])
-  while (
-    await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
-  ) {
-    await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').click()
-    await page
-      .locator('[role=menuitem][aria-label="Settings"]')
-      .first()
-      .click()
-    const projectName = await page
-      .locator('[placeholder="Project name"]')
-      .inputValue()
-    await page.locator("text=Delete project").click()
-    await page.locator(".bootbox-input").fill(projectName)
-    await Promise.all([
-      page.waitForNavigation(),
-      page.locator('button:has-text("Delete project")').click(),
-    ])
-  }
+  await projects.removeAllProjects()
 })
 
 

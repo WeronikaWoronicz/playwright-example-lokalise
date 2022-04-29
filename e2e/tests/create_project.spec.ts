@@ -1,58 +1,42 @@
-import { test, expect, Page } from "@playwright/test"
-import { faker } from "@faker-js/faker"
+import { test, expect } from "@playwright/test"
+import { Projects } from "../pages/Projects/Projects"
+import { project } from "../fixtures/project"
 
+test.beforeEach(async ({ page }) => { 
+const projects = new Projects(page)
 
-test.beforeEach(async ({ page }) => {
-  await page.goto("https://app.stage.lokalise.cloud/projects")
+  await projects.navigate()
 })
 
 test.afterAll(async ({ page }) => {
-  await Promise.all([
-    page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects' }),
-    page.locator('a:text("Projects")').click()
-  ])
-  while (
-    await page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
-  ) {
-    await page.click('[aria-label="More\\.\\.\\."] >> nth=0')
-    await page
-      .locator('[role=menuitem][aria-label="Settings"]')
-      .first()
-      .click()
-    const projectName = await page
-      .locator('[placeholder="Project name"]')
-      .inputValue()
-    await page.locator("text=Delete project").click()
-    await page.locator(".bootbox-input").fill(projectName)
-    await Promise.all([
-      page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects/' }),
-      page.locator('button:has-text("Delete project")').click(),
-    ])
-  }
+  const projects = new Projects(page)
+
+  await projects.navigateFromProjectToProjects()
+  await projects.removeAllProjects()
 })
 
 test.describe("Adding Project", () => {
   test("first project should be created", async ({ page }) => {
-    const firstProjectName = "Test first project" + faker.random.word()
-    await page.locator("text=Create project").click()
-    await page
-      .locator('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]')
-      .fill(firstProjectName)
+    const projects = new Projects(page)
+  
+    await projects.clickCreateFirstProjectBtn()
+    await projects.typeProjectName()
     await page.locator("#react-select-3-input").fill("Spanish (es)")
     await page.locator("#react-select-3-input").press("Enter")
     await page.locator('button:visible:has-text("Proceed")').click()
     await page.click('[aria-label="Close dialog"]')
+    await page.locator(`a:text("${project.name}")`).isVisible()
   })
 
   test("nth project should be added", async ({ page }) => {
-    const secondProjectName = "Test second project" + faker.random.word()
+    
     await page.locator('button:has-text("New project")').click()
     await expect(page).toHaveURL(
       "https://app.stage.lokalise.cloud/projects#modal:new-project"
     )
     await page
       .locator('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]')
-      .fill(secondProjectName)
+      .fill(project.otherName)
     await page.locator("#react-select-3-input").fill("Spanish (es)")
     await page.locator("#react-select-3-input").press("Enter")
     await Promise.all([
