@@ -1,8 +1,6 @@
 import { test, expect } from "@playwright/test"
 import { Projects } from "../pages/Projects/Projects"
 import { CreateProjects } from "../pages/Project/CreateProject"
-import { Login } from "../pages/login/Login"
-import { project } from "../fixtures/project"
 
 test.beforeEach(async ({ page }) => { 
 const projects = new Projects(page)
