@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test"
 import { Projects } from "../pages/Projects/Projects"
+import { CreateProjects } from "../pages/Project/CreateProject"
 import { Login } from "../pages/login/Login"
 import { project } from "../fixtures/project"
 
@@ -17,16 +18,13 @@ test.afterEach(async ({ page }) => {
 })
 
 test.describe("Adding Project", () => {
-  test.only("first project should be created", async ({ page }) => {
-    const projects = new Projects(page)
+  test("first project should be created", async ({ page }) => {
+    const createProject = new CreateProjects(page)
 
-    await projects.clickCreateFirstProjectBtn()
-    await projects.typeProjectName()
-    await page.locator("#react-select-3-input").fill("Spanish (es)")
-    await page.locator("#react-select-3-input").press("Enter")
-    await page.locator('button:visible:has-text("Proceed")').click()
-    await page.click('[aria-label="Close dialog"]')
-    await projects.navigateFromProjectToProjects()
+    await createProject.clickCreateFirstProjectBtn()
+    await createProject.createProjectWithJustRequiredFields()
+
+
     //await expect(`a:text("${project.name}")`).toContainText(project.name)
     //const projectCreated = await page.locator(`a:text("${project.name}")`).isVisible()
     //expect(projectCreated).toBeTruthy()
@@ -37,24 +35,16 @@ test.describe("Adding Project", () => {
 
   test("nth project should be added", async ({ page }) => {
     const projects = new Projects(page)
+    const createProject = new CreateProjects(page)
 
-    await projects.navigate()
-    await projects.clickCreateFirstProjectBtn()
-    await projects.typeProjectName()
-    await page.locator("#react-select-3-input").fill("Spanish (es)")
-    await page.locator("#react-select-3-input").press("Enter")
-    await page.locator('button:visible:has-text("Proceed")').click()
-    await page.click('[aria-label="Close dialog"]')
+    await createProject.clickCreateFirstProjectBtn()
+    await createProject.createProjectWithJustRequiredFields()
     await projects.navigateFromProjectToProjects()
-    await page.locator('button:has-text("New project")').click()
+    await createProject.clickCreateNewProjectBtn()
     await expect(page).toHaveURL(
       "https://app.stage.lokalise.cloud/projects#modal:new-project"
     )
-    await page
-      .locator('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]')
-      .fill(project.otherName)
-    await page.locator("#react-select-3-input").fill("Spanish (es)")
-    await page.locator("#react-select-3-input").press("Enter")
-    await page.locator('button:visible:has-text("Proceed")').click()
+    await createProject.createProjectWithJustRequiredFields()
+
   })
 })

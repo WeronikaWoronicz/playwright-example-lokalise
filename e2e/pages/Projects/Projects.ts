@@ -21,16 +21,6 @@ export class Projects {
     this.page = page
   }
 
-  clickCreateFirstProjectBtn(): Promise<void> {
-    return this.page.locator("button:text('Get started')").click()
-  }
-
- async typeProjectName(): Promise<void> {
-    return this.page
-      .fill('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]', project.name)
-  }
-
-
   navigate(): Promise<Response | null> {
     return this.page.goto("https://app.stage.lokalise.cloud/projects") 
   }
