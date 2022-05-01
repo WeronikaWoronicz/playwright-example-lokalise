@@ -22,7 +22,7 @@ export class Projects {
   }
 
   clickCreateFirstProjectBtn(): Promise<void> {
-    return this.page.locator("text=Create project").click()
+    return this.page.locator("button:text('Get started')").click()
   }
 
  async typeProjectName(): Promise<void> {
