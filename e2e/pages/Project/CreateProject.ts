@@ -1,5 +1,6 @@
 import type { Page, Response } from "@playwright/test"
 import { project } from "../../fixtures/project"
+import { expect } from "@playwright/test"
 const createProjectSelectors = require("./CreateProjectSelectors")
 
 export class CreateProjects {
@@ -48,6 +49,23 @@ export class CreateProjects {
       await this.confirmTargetOneLanguage()
       await this.clickProceedToCreateProjectBtn()
       return
+  }
+
+//Assertions
+
+  async createdProjectIsVisible(): Promise<void> {
+    await this.page.waitForNavigation()
+    const projectIsVisible = await this.page.isVisible(`a:text("${project.name}")`)
+    expect(projectIsVisible).toBe(true)
+     console.log('Project\'s is created and project\'s page is opened')
+    return
+  }
+
+  async numberOfProjectsIsVisible(number:number): Promise<void> {
+    await this.page.waitForSelector('[data-name="project-container"]')
+    const projectNumber = await this.page.locator('[data-name="project-container"]').count()
+    expect(projectNumber).toBe(number)
+    console.log(`There ${projectNumber} projects visible`)
   }
 
 
