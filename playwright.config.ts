@@ -1,11 +1,9 @@
 import type { PlaywrightTestConfig } from "@playwright/test"
 import { devices } from "@playwright/test"
+import dotenv from 'dotenv';
+import path from 'path';
 
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// require('dotenv').config()
+dotenv.config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -15,15 +13,15 @@ const config: PlaywrightTestConfig = {
   globalSetup: require.resolve('./global-setup'),
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    // Tell all tests to load signed-in state from 'storageState.json'.
     storageState: 'storageState.json',
-    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
+    baseURL: process.env.STAGING === '1' ? 'https://app.stage.lokalise.cloud': 'https://lokalise.com/',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+    screenshot: 'only-on-failure',
   },
   /* Maximum time one test can run for. */
   timeout: 50 * 1000,
@@ -53,7 +51,7 @@ const config: PlaywrightTestConfig = {
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
+  outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {

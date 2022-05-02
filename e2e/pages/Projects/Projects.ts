@@ -22,7 +22,7 @@ export class Projects {
   }
 
   navigate(): Promise<Response | null> {
-    return this.page.goto("https://app.stage.lokalise.cloud/projects") 
+    return this.page.goto("/projects") 
   }
 
   navigateFromProjectToProjects(): Promise<void> {
@@ -30,9 +30,7 @@ export class Projects {
 }
 
   async removeAllProjects(): Promise<void> {
-    while (
-        await this.page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()
-      ) {
+    while (await this.page.locator('[aria-label="More\\.\\.\\."] >> nth=0').isVisible()) {
         await this.page.click('[aria-label="More\\.\\.\\."] >> nth=0')
         await this.page
           .locator('[role=menuitem][aria-label="Settings"]')
@@ -43,10 +41,13 @@ export class Projects {
           .inputValue()
         await this.page.locator("text=Delete project").click()
         await this.page.locator(".bootbox-input").fill(projectName)
-        await this.page.locator('button:has-text("Delete project")').click()
-        await this.page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects/' })
-  }
-        return
+        await Promise.all([
+          this.page.locator('button:has-text("Delete project")').click(),
+          this.page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects/' })
+        ])
+      
+    }
+    return
 }
 
 }

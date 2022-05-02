@@ -7,17 +7,6 @@ export class KeyEditor {
  
   private page: Page
 
-/** selectors */
-
-
-// private firstNameInput = "#firstName";
-// private lastNameInput = "#lastName";
-// private usernameInput = "#username";
-// private passwordInput = "#password";
-// private emailInput = "#emailAddress";
-// private phoneInput = "#phoneNumber";
-// private signUpButton = ".cl-sign-up-button";
-  
 /** properties */
 //url = config.HOST + "/sign-up";
 

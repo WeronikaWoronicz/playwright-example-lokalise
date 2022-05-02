@@ -1,18 +1,18 @@
-import { chromium, FullConfig } from '@playwright/test'
+import { chromium, FullConfig  } from '@playwright/test'
+import actualConfig from  './playwright.config'
 import { login } from "./e2e/fixtures/login"
 
 async function globalSetup(config: FullConfig) {
   const browser = await chromium.launch()
-  const page = await browser.newPage();
-  await page.goto("https://app.stage.lokalise.cloud")
+  const page = await browser.newPage({baseURL: actualConfig.use.baseURL});
+  await page.goto("/")
   await page
-    .locator('[placeholder="user\\@company\\.com"]')
-    .fill(login.email)
-  await page.locator('[placeholder="password"]').click()
-  await page.locator('[placeholder="password"]').fill(login.password)
+    .fill('[placeholder="user\\@company\\.com"]', process.env.EMAIL)
+  await page.click('[placeholder="password"]')
+  await page.fill('[placeholder="password"]', process.env.PASSWORD)
   await Promise.all([
-    page.waitForNavigation(/*{ url: 'https://app.stage.lokalise.cloud/projects' }*/),
-    page.locator('button:has-text("Log in")').click(),
+    page.waitForNavigation(),
+    page.click('button:has-text("Log in")'),
   ])
   // Save signed-in state to 'storageState.json'.
   await page.context().storageState({ path: 'storageState.json' });

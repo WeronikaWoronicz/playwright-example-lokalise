@@ -6,13 +6,6 @@ export class CreateProjects {
  
   private page: Page
 
-/** selectors */
-
-// private buttonGetStarted = 'button:text("Get started")'
-// private 
-// private navigateLinkToProjects = 'a:text("Projects")'
-// private 
-  
 /** properties */
 //url = config.HOST + "/sign-up";
 

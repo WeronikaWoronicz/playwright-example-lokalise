@@ -9,7 +9,7 @@ const projects = new Projects(page)
   await projects.removeAllProjects()
 })
 
-test.afterEach(async ({ page }) => {
+test.afterAll(async ({ page }) => {
   const projects = new Projects(page)
   await projects.navigate()
   await projects.removeAllProjects()
