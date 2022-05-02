@@ -97,7 +97,6 @@ export class KeyEditor {
   async checkThatPluralTranslationIsAdded(nth: number, translationOne: string, translationOther: string, formOne: string, formOther: string) : Promise<void> {
     let pluralTranslationLocatorOne = this.page.locator(keyEditorSelectors.getPluralForm(formOne) + keyEditorSelectors.getNth(nth))
     let pluralTranslationLocatorOther = this.page.locator(keyEditorSelectors.getPluralForm(formOther) + keyEditorSelectors.getNth(nth))
-    this.page.waitForNavigation()
     expect(pluralTranslationLocatorOne).toHaveText(translationOne)
     expect(pluralTranslationLocatorOther).toHaveText(translationOther)
     return

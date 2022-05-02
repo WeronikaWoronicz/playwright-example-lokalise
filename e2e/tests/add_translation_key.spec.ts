@@ -3,6 +3,9 @@ import { project } from "../fixtures/project"
 import { Projects } from "../pages/Projects/Projects"
 import { CreateProjects } from "../pages/Project/CreateProject"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
+const createProjectSelectors = require("../pages/Project/CreateProjectSelectors")
+const keyEditorSelectors = require("../pages/KeyEditor/KeyEditorSelectors")
+
 
 
 test.beforeEach(async ({ page }) => {
@@ -27,9 +30,9 @@ test.describe("Add key", () => {
     const keyEditor = new KeyEditor(page)
 
     await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey('KeyID')
-    await page.waitForSelector('a:text("KeyID")')
-    const keyIdVisibility = await page.locator('a:text("KeyID")').isVisible()
+    await keyEditor.addKey(project.keyId)
+    await page.waitForSelector(keyEditorSelectors.getKeyIdLink(project.keyId))
+    const keyIdVisibility = await page.locator(keyEditorSelectors.getKeyIdLink(project.keyId)).isVisible()
     expect(keyIdVisibility).toBe(true)
 
   })
@@ -38,9 +41,9 @@ test.describe("Add key", () => {
     const keyEditor = new KeyEditor(page)
 
     await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey('KeyID')
-    await page.isVisible(`a:text("${project.name}")`)
-    await keyEditor.clickAndTypeKeyValue(1, 'Login')
+    await keyEditor.addKey(project.keyId)
+    await page.isVisible(createProjectSelectors.getProjectLink(project.name))
+    await keyEditor.clickAndTypeKeyValue(1, project.toTranslate)
     await keyEditor.selectFirstTranslationByKey(2)
     await keyEditor.checkThatTranslationValueIsNotNull(2)
     console.log('Translation is added')
@@ -51,12 +54,12 @@ test.describe("Add key", () => {
     const keyEditor = new KeyEditor(page)
 
     await keyEditor.clickAddFirstKey()
-    await keyEditor.addPluralKey('KeyId')
-    await keyEditor.addPluralTranslation(0, 'cat', 'one')
-    await keyEditor.addPluralTranslation(0, 'cats', 'other')
-    await keyEditor.addPluralTranslation(1, 'el gato', 'one')
-    await keyEditor.addPluralTranslation(1, 'los gatos', 'other')
-    await keyEditor.checkThatPluralTranslationIsAdded(1, 'el gato', 'los gatos','one', 'other' )
+    await keyEditor.addPluralKey(project.keyId)
+    await keyEditor.addPluralTranslation(0, project.pluralToTranslateOne, keyEditorSelectors.pluralForm.one)
+    await keyEditor.addPluralTranslation(0, project.pluralToTranslateOther, keyEditorSelectors.pluralForm.other)
+    await keyEditor.addPluralTranslation(1, project.pluralTranslationOne, keyEditorSelectors.pluralForm.one)
+    await keyEditor.addPluralTranslation(1, project.pluralTranslationOther, keyEditorSelectors.pluralForm.other)
+    await keyEditor.checkThatPluralTranslationIsAdded(1, project.pluralTranslationOne, project.pluralTranslationOther,keyEditorSelectors.pluralForm.one, keyEditorSelectors.pluralForm.other )
     console.log('Plural translation is added')
   })
 })
