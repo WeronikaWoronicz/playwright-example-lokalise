@@ -4,6 +4,7 @@ type CreateProjectSelectors = {
     input: { [id: string]: string; }
     key: { [id: string]: string; }
     getNth: (n: number) => string
+    getProjectLink: (projectName: string) => string
 }
 
 const createProjectSelectors: CreateProjectSelectors = {
@@ -23,6 +24,7 @@ const createProjectSelectors: CreateProjectSelectors = {
         project: '[data-name="project-container"]',
     },
     getNth: (nth: number) => ` >> nth=${nth}`,
+    getProjectLink: (projectName: string) => `a:text("${projectName}")`,
 
 }
 

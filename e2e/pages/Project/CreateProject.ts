@@ -35,7 +35,7 @@ export class CreateProjects {
 
   fillTargetOneLanguage(): Promise<void> {
     return this.page
-      .fill(createProjectSelectors.input.targetLanguage, "Spanish (es)")  
+      .fill(createProjectSelectors.input.targetLanguage, project.language)  
   }
 
   async createProjectWithJustRequiredFields(): Promise<void> {
@@ -50,7 +50,7 @@ export class CreateProjects {
 
   async createdProjectIsVisible(): Promise<void> {
     await this.page.waitForNavigation()
-    const projectIsVisible = await this.page.isVisible(`a:text("${project.name}")`)
+    const projectIsVisible = await this.page.isVisible(createProjectSelectors.getProjectLink(project.name))
     expect(projectIsVisible).toBe(true)
      console.log('Project\'s is created and project\'s page is opened')
     return
