@@ -6,9 +6,6 @@ export class CreateProjects {
  
   private page: Page
 
-/** properties */
-//url = config.HOST + "/sign-up";
-
   constructor(page: Page) {
     this.page = page
   }
