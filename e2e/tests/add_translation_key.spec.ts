@@ -34,6 +34,7 @@ test.describe("Add key", () => {
     await page.waitForSelector(keyEditorSelectors.getKeyIdLink(project.keyId))
     const keyIdVisibility = await page.locator(keyEditorSelectors.getKeyIdLink(project.keyId)).isVisible()
     expect(keyIdVisibility).toBe(true)
+    console.log("Key is added")
 
   })
 
