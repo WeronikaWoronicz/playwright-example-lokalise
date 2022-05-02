@@ -6,6 +6,8 @@ export class KeyEditor {
   private page: Page
 
 /** selectors */
+
+
 // private firstNameInput = "#firstName";
 // private lastNameInput = "#lastName";
 // private usernameInput = "#username";
@@ -21,9 +23,9 @@ export class KeyEditor {
     this.page = page
   }
 
-  addKeyID(): Promise<void> {
+  addKeyID(keyId: string): Promise<void> {
     return this.page
-            .fill('#keyName', 'Login')
+            .fill('#keyName', 'keyID')
 }
   
   clickAddKeyBtn(): Promise<void> {
@@ -34,6 +36,10 @@ export class KeyEditor {
   clickAddFirstKey(): Promise<void> {
       return this.page
               .click('[aria-label="Add first key"]')
+  }
+
+  clickSwitch(nth: number): Promise<void> {
+    return this.page.click(`[class="bootstrap-switch-handle-off bootstrap-switch-default"] >> nth=${nth}`)
   }
 
   confirmPlatformSelect(): Promise<void> {
@@ -47,10 +53,20 @@ export class KeyEditor {
   }
 
   
-  async addKey() {
-    await this.addKeyID()
+  async addKey(keyID: string): Promise<void> {
+    await this.addKeyID(keyID)
     await this.selectOnePlatform()
     await this.confirmPlatformSelect()
+    await this.clickAddKeyBtn()
+  return
+}
+
+  async addPlurarKey(KeyID: string): Promise<void> {
+    await this.addKeyID(KeyID)
+    await this.selectOnePlatform()
+    await this.confirmPlatformSelect()
+    await this.page.click("#advanced_tab")
+    await this.clickSwitch(3)
     await this.clickAddKeyBtn()
   return
 }
@@ -76,4 +92,10 @@ export class KeyEditor {
       return
   }
 
+  async addPlurarTranslations(nth: number, translation: string, form: string){
+    await this.page.click(`[data-lokalise-editor-plural="${form}"] >> nth=${nth}`)
+    await this.page.type('[class="CodeMirror-line"]', translation)
+    await this.page.click('[alt="save"]') 
+    return
+  }
 }
