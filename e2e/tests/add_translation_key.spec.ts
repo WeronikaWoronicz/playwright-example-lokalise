@@ -45,7 +45,7 @@ test.describe("Add key", () => {
     await page.isVisible(createProjectSelectors.getProjectLink(project.name))
     await keyEditor.clickAndTypeKeyValue(1, project.toTranslate)
     await keyEditor.selectFirstTranslationByKey(2)
-    await keyEditor.checkThatTranslationValueIsNotNull(2)
+    await keyEditor.expectThatTranslationValueIsNotNull(2)
     console.log('Translation is added')
    
   })
@@ -59,7 +59,7 @@ test.describe("Add key", () => {
     await keyEditor.addPluralTranslation(0, project.pluralToTranslateOther, keyEditorSelectors.pluralForm.other)
     await keyEditor.addPluralTranslation(1, project.pluralTranslationOne, keyEditorSelectors.pluralForm.one)
     await keyEditor.addPluralTranslation(1, project.pluralTranslationOther, keyEditorSelectors.pluralForm.other)
-    await keyEditor.checkThatPluralTranslationIsAdded(1, project.pluralTranslationOne, project.pluralTranslationOther,keyEditorSelectors.pluralForm.one, keyEditorSelectors.pluralForm.other )
+    await keyEditor.expectThatPluralTranslationIsAdded(1, project.pluralTranslationOne, project.pluralTranslationOther,keyEditorSelectors.pluralForm.one, keyEditorSelectors.pluralForm.other )
     console.log('Plural translation is added')
   })
 })

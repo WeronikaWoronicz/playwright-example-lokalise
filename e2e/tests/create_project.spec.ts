@@ -22,9 +22,9 @@ test.describe("Adding Project", () => {
 
     await createProject.clickCreateFirstProjectBtn()
     await createProject.createProjectWithJustRequiredFields()
-    await createProject.createdProjectIsVisible()
+    await createProject.expectThatCreatedProjectIsVisible()
     await projects.navigateFromProjectToProjects()
-    await createProject.numberOfProjectsIsVisible(1) 
+    await createProject.expectNumberOfProjectsVisibleIs(1) 
   })
 
   test("nth project should be added", async ({ page }) => {
@@ -36,9 +36,9 @@ test.describe("Adding Project", () => {
     await projects.navigateFromProjectToProjects()
     await createProject.clickCreateNewProjectBtn()
     await createProject.createProjectWithJustRequiredFields()
-    await createProject.createdProjectIsVisible()
+    await createProject.expectThatCreatedProjectIsVisible()
     await projects.navigateFromProjectToProjects()
-    await createProject.numberOfProjectsIsVisible(2)
+    await createProject.expectNumberOfProjectsVisibleIs(2)
 
   })
 })

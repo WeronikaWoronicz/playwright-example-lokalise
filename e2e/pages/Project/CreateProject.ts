@@ -48,7 +48,7 @@ export class CreateProjects {
 
 //Assertions
 
-  async createdProjectIsVisible(): Promise<void> {
+  async expectThatCreatedProjectIsVisible(): Promise<void> {
     await this.page.waitForNavigation()
     const projectIsVisible = await this.page.isVisible(createProjectSelectors.getProjectLink(project.name))
     expect(projectIsVisible).toBe(true)
@@ -56,11 +56,11 @@ export class CreateProjects {
     return
   }
 
-  async numberOfProjectsIsVisible(number:number): Promise<void> {
+  async expectNumberOfProjectsVisibleIs(number:number): Promise<void> {
     await this.page.waitForSelector(createProjectSelectors.container.project)
     const projectNumber = await this.page.locator(createProjectSelectors.container.project).count()
     expect(projectNumber).toBe(number)
-    console.log(`There ${projectNumber} projects visible`)
+    console.log(`Number of projects visible: ${projectNumber}`)
   }
 
 

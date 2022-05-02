@@ -32,7 +32,7 @@ export class Projects {
         await this.page.locator(projectsSelectors.input.projectName).fill(projectName)
         await Promise.all([
           this.page.locator(projectsSelectors.button.deleteProject).click(),
-          this.page.waitForNavigation({ url: 'https://app.stage.lokalise.cloud/projects/' })
+          this.page.waitForNavigation({ url: new RegExp(`.*/projects`)})
         ])
       
     }

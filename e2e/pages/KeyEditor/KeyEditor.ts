@@ -80,13 +80,6 @@ export class KeyEditor {
       return
   }
 
-  async checkThatTranslationValueIsNotNull(rowNumber: number): Promise<void> {
-    let dataId = await this.clickOnTranslationRow(rowNumber)
-    let translationLocator = this.page.locator(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId))
-    expect(translationLocator).not.toBeEmpty()
-    return
-  }
-
   async addPluralTranslation(nth: number, translation: string, form: string){
     await this.page.click(keyEditorSelectors.getPluralForm(form) + keyEditorSelectors.getNth(nth))
     await this.page.type(keyEditorSelectors.form.line, translation)
@@ -94,7 +87,14 @@ export class KeyEditor {
     return
   }
 
-  async checkThatPluralTranslationIsAdded(nth: number, translationOne: string, translationOther: string, formOne: string, formOther: string) : Promise<void> {
+  async expectThatTranslationValueIsNotNull(rowNumber: number): Promise<void> {
+    let dataId = await this.clickOnTranslationRow(rowNumber)
+    let translationLocator = this.page.locator(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId))
+    expect(translationLocator).not.toBeEmpty()
+    return
+  }
+
+  async expectThatPluralTranslationIsAdded(nth: number, translationOne: string, translationOther: string, formOne: string, formOther: string) : Promise<void> {
     let pluralTranslationLocatorOne = this.page.locator(keyEditorSelectors.getPluralForm(formOne) + keyEditorSelectors.getNth(nth))
     let pluralTranslationLocatorOther = this.page.locator(keyEditorSelectors.getPluralForm(formOther) + keyEditorSelectors.getNth(nth))
     expect(pluralTranslationLocatorOne).toHaveText(translationOne)
