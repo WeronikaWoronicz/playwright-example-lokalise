@@ -21,14 +21,6 @@ test.describe("Adding Project", () => {
 
     await createProject.clickCreateFirstProjectBtn()
     await createProject.createProjectWithJustRequiredFields()
-
-
-    //await expect(`a:text("${project.name}")`).toContainText(project.name)
-    //const projectCreated = await page.locator(`a:text("${project.name}")`).isVisible()
-    //expect(projectCreated).toBeTruthy()
-    //await projects.navigateFromProjectToProjects()
-   //const number = await page.locator('[data-name="project-container"]').count()
-    //expect(number).toBe(1)
   })
 
   test("nth project should be added", async ({ page }) => {

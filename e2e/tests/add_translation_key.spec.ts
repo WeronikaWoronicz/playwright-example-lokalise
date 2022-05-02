@@ -26,42 +26,27 @@ test.describe("Add key", () => {
     const keyEditor = new KeyEditor(page)
 
     await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey()
+    await keyEditor.addKey('KeyID')
   })
 
   test("translation for plain key should be added", async ({ page }) => {
     const keyEditor = new KeyEditor(page)
 
     await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey()
+    await keyEditor.addKey('KeyID')
     await page.isVisible(`a:text("${project.name}")`)
     await keyEditor.clickAndTypeKeyValue(1, 'Login')
     await keyEditor.selectFirstTranslationByKey(2)
   })
 
   test("translation for plural key should be added", async ({ page }) => {
-    await page.locator('[aria-label="Add first key"]').click()
-    await page.locator("#keyName").fill("The End")
-    await page.locator("#s2id_autogen6").fill("Web")
-    await page.locator("#s2id_autogen6").press("Enter")
-    await page.locator("#advanced_tab").click()
-    await page
-      .locator(
-        '[class="bootstrap-switch-handle-off bootstrap-switch-default"] >> nth=3'
-      )
-      .click()
-    await page.click("#btn_addkey")
-    await page.click('[data-lokalise-editor-plural="one"] >> nth=0')
-    await page.type('[class="CodeMirror-line"]', 'cat')
-    await page.click('[alt="save"]')
-    await page.click('[data-lokalise-editor-plural="other"] >> nth=0')
-    await page.type('[class="CodeMirror-line"]', 'cats')
-    await page.click('[alt="save"]')
-    await page.click('[data-lokalise-editor-plural="one"] >> nth=1')
-    await page.type('[class="CodeMirror-line"]', 'el gato')
-    await page.click('[alt="save"]')
-    await page.click('[data-lokalise-editor-plural="other"] >> nth=1')
-    await page.type('[class="CodeMirror-line"]', 'los gatos')
-    await page.click('[alt="save"]')  
+    const keyEditor = new KeyEditor(page)
+
+    await keyEditor.clickAddFirstKey()
+    await keyEditor.addPluralKey('KeyId')
+    await keyEditor.addPluralTranslation(0, 'cat', 'one')
+    await keyEditor.addPluralTranslation(0, 'cats', 'other')
+    await keyEditor.addPluralTranslation(1, 'el gato', 'one')
+    await keyEditor.addPluralTranslation(1, 'los gatos', 'other')
   })
 })
