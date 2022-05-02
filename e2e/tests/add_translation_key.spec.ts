@@ -28,6 +28,7 @@ test.describe("Add key", () => {
     await keyEditor.clickAddFirstKey()
     await keyEditor.addKey('KeyID')
     
+
   })
 
   test("translation for plain key should be added", async ({ page }) => {

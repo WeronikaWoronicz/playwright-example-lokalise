@@ -16,17 +16,12 @@ export class CreateProjects {
   }
 
   clickCreateNewProjectBtn(): Promise<void> {
-    return this.page.click('button:has-text("New project")')
+    return this.page.click(createProjectSelectors.buttons.newProject)
   }
 
   clickProceedToCreateProjectBtn(): Promise<void> {
-    return this.page.click('button:visible:has-text("Proceed")')
+    return this.page.click(createProjectSelectors.buttons.proceed)
   }
-
-  closeDialog(): Promise<void> {
-    return this.page
-      .click('[aria-label="Close dialog"]')
-}
 
   confirmTargetOneLanguage(): Promise<void> {
     return this.page

@@ -7,9 +7,6 @@ export class KeyEditor {
  
   private page: Page
 
-/** properties */
-//url = config.HOST + "/sign-up";
-
   constructor(page: Page) {
     this.page = page
   }
@@ -21,12 +18,12 @@ export class KeyEditor {
   
   clickAddKeyBtn(): Promise<void> {
       return this.page
-              .click('#btn_addkey')
+              .click(keyEditorSelectors.buttons.addKey)
   }
 
   clickAddFirstKey(): Promise<void> {
       return this.page
-              .click('[aria-label="Add first key"]')
+              .click(keyEditorSelectors.buttons.addFirstKey)
   }
 
   toggleSwitch(nth: number): Promise<void> {
@@ -35,12 +32,12 @@ export class KeyEditor {
 
   confirmPlatformSelect(): Promise<void> {
     return this.page
-             .press('#s2id_autogen6', 'Enter')  
+             .press(keyEditorSelectors.input.platformSelect, 'Enter')  
   }
   
   selectPlatform(): Promise<void> {
       return this.page
-              .fill('#s2id_autogen6', "Web")
+              .fill(keyEditorSelectors.input.platformSelect, "Web")
   }
 
   
@@ -56,7 +53,7 @@ export class KeyEditor {
     await this.fillKeyId(keyId)
     await this.selectPlatform()
     await this.confirmPlatformSelect()
-    await this.page.click("#advanced_tab")
+    await this.page.click(keyEditorSelectors.tab.advanced)
     await this.toggleSwitch(3)
     await this.clickAddKeyBtn()
   return
@@ -64,14 +61,14 @@ export class KeyEditor {
 
   async clickAndTypeKeyValue(rowNumber: number, keyValue: string): Promise<void> {
     let dataId = await this.clickOnTranslationRow(rowNumber)
-    await this.page.type(`#transcell-${dataId}`, keyValue)
+    await this.page.type(keyEditorSelectors.cell.transcell + keyEditorSelectors.getDataId(dataId), keyValue)
     return
   }
 
   async clickOnTranslationRow(rowNumber: number): Promise<string> {
     let dataId = await this.page
         .getAttribute(`tr.row-trans.translation:nth-child(${rowNumber})`, 'data-id')
-    await this.page.click(`#transcell-${dataId}`)
+    await this.page.click(keyEditorSelectors.cell.transcell + keyEditorSelectors.getDataId(dataId))
     return dataId
   }
 
