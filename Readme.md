@@ -7,7 +7,7 @@
 ## Install dependencies :
 
 ```
-npm
+npm install
 ```
 
 ## Command to run tests 
@@ -16,5 +16,5 @@ npm
 npx playwright test
 ```
 
-
+#TODO: It was not required in the assignment, but adding more users and optimze login, can increase performance of tests. 
 

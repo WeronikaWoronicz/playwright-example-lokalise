@@ -1,4 +1,5 @@
-import type { Page, Response } from "@playwright/test"
+import type { Page, Response} from "@playwright/test"
+import { expect } from "@playwright/test"
 import { project } from "../../fixtures/project"
 const keyEditorSelectors = require("./KeyEditorSelectors")
 
@@ -79,10 +80,26 @@ export class KeyEditor {
       return
   }
 
+  async checkThatTranslationValueIsNotNull(rowNumber: number): Promise<void> {
+    let dataId = await this.clickOnTranslationRow(rowNumber)
+    let translationLocator = this.page.locator(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId))
+    expect(translationLocator).not.toBeEmpty()
+    return
+  }
+
   async addPluralTranslation(nth: number, translation: string, form: string){
     await this.page.click(keyEditorSelectors.getPluralForm(form) + keyEditorSelectors.getNth(nth))
     await this.page.type(keyEditorSelectors.form.line, translation)
     await this.page.click(keyEditorSelectors.save.alt) 
+    return
+  }
+
+  async checkThatPluralTranslationIsAdded(nth: number, translationOne: string, translationOther: string, formOne: string, formOther: string) : Promise<void> {
+    let pluralTranslationLocatorOne = this.page.locator(keyEditorSelectors.getPluralForm(formOne) + keyEditorSelectors.getNth(nth))
+    let pluralTranslationLocatorOther = this.page.locator(keyEditorSelectors.getPluralForm(formOther) + keyEditorSelectors.getNth(nth))
+    this.page.waitForNavigation()
+    expect(pluralTranslationLocatorOne).toHaveText(translationOne)
+    expect(pluralTranslationLocatorOther).toHaveText(translationOther)
     return
   }
 }

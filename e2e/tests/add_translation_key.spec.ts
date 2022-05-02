@@ -4,6 +4,7 @@ import { Projects } from "../pages/Projects/Projects"
 import { CreateProjects } from "../pages/Project/CreateProject"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
 
+
 test.beforeEach(async ({ page }) => {
   const projects = new Projects(page)
   const createProject = new CreateProjects(page)
@@ -27,7 +28,9 @@ test.describe("Add key", () => {
 
     await keyEditor.clickAddFirstKey()
     await keyEditor.addKey('KeyID')
-    
+    await page.waitForSelector('a:text("KeyID")')
+    const keyIdVisibility = await page.locator('a:text("KeyID")').isVisible()
+    expect(keyIdVisibility).toBe(true)
 
   })
 
@@ -39,6 +42,9 @@ test.describe("Add key", () => {
     await page.isVisible(`a:text("${project.name}")`)
     await keyEditor.clickAndTypeKeyValue(1, 'Login')
     await keyEditor.selectFirstTranslationByKey(2)
+    await keyEditor.checkThatTranslationValueIsNotNull(2)
+    console.log('Translation is added')
+   
   })
 
   test("translation for plural key should be added", async ({ page }) => {
@@ -50,5 +56,7 @@ test.describe("Add key", () => {
     await keyEditor.addPluralTranslation(0, 'cats', 'other')
     await keyEditor.addPluralTranslation(1, 'el gato', 'one')
     await keyEditor.addPluralTranslation(1, 'los gatos', 'other')
+    await keyEditor.checkThatPluralTranslationIsAdded(1, 'el gato', 'los gatos','one', 'other' )
+    console.log('Plural translation is added')
   })
 })
