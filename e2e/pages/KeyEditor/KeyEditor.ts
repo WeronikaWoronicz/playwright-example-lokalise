@@ -13,7 +13,7 @@ export class KeyEditor {
 
   fillKeyId(keyId: string): Promise<void> {
     return this.page
-            .fill('#keyName', keyId)
+            .fill(keyEditorSelectors.input.keyID, keyId)
 }
   
   clickAddKeyBtn(): Promise<void> {
@@ -32,12 +32,12 @@ export class KeyEditor {
 
   confirmPlatformSelect(): Promise<void> {
     return this.page
-             .press(keyEditorSelectors.input.platformSelect, 'Enter')  
+             .press(keyEditorSelectors.input.platformSelect, keyEditorSelectors.keyShortcuts.enter)  
   }
   
   selectPlatform(): Promise<void> {
       return this.page
-              .fill(keyEditorSelectors.input.platformSelect, "Web")
+              .fill(keyEditorSelectors.input.platformSelect, project.platform)
   }
 
   
@@ -61,28 +61,28 @@ export class KeyEditor {
 
   async clickAndTypeKeyValue(rowNumber: number, keyValue: string): Promise<void> {
     let dataId = await this.clickOnTranslationRow(rowNumber)
-    await this.page.type(keyEditorSelectors.cell.transcell + keyEditorSelectors.getDataId(dataId), keyValue)
+    await this.page.type(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId), keyValue)
     return
   }
 
   async clickOnTranslationRow(rowNumber: number): Promise<string> {
     let dataId = await this.page
-        .getAttribute(`tr.row-trans.translation:nth-child(${rowNumber})`, 'data-id')
-    await this.page.click(keyEditorSelectors.cell.transcell + keyEditorSelectors.getDataId(dataId))
+        .getAttribute(keyEditorSelectors.form.trRow + keyEditorSelectors.getRowNumber(rowNumber), 'data-id')
+    await this.page.click(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId))
     return dataId
   }
 
   async selectFirstTranslationByKey(rowNumber: number): Promise<void> {
     let dataId = await this.clickOnTranslationRow(rowNumber)
     await this.page
-      .press(`#transcell-${dataId}`, "Alt+1")
+      .press(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId), keyEditorSelectors.keyShortcuts.firstTranslation)
       return
   }
 
   async addPluralTranslation(nth: number, translation: string, form: string){
-    await this.page.click(`[data-lokalise-editor-plural="${form}"] >> nth=${nth}`)
-    await this.page.type('[class="CodeMirror-line"]', translation)
-    await this.page.click('[alt="save"]') 
+    await this.page.click(keyEditorSelectors.getPluralForm(form) + keyEditorSelectors.getNth(nth))
+    await this.page.type(keyEditorSelectors.form.line, translation)
+    await this.page.click(keyEditorSelectors.save.alt) 
     return
   }
 }

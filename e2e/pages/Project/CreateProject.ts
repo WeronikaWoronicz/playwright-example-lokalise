@@ -25,17 +25,17 @@ export class CreateProjects {
 
   confirmTargetOneLanguage(): Promise<void> {
     return this.page
-      .press('#react-select-3-input',"Enter")
+      .press(createProjectSelectors.input.targetLanguage,createProjectSelectors.key.enter)
 }
 
   fillProjectName(): Promise<void> {
     return this.page
-      .fill('[placeholder="MyApp \\(iOS \\+ Android \\+ Web\\)"]', project.name)
+      .fill(createProjectSelectors.input.projectName, project.name)
   }
 
   fillTargetOneLanguage(): Promise<void> {
     return this.page
-      .fill('#react-select-3-input', "Spanish (es)")  
+      .fill(createProjectSelectors.input.targetLanguage, "Spanish (es)")  
   }
 
   async createProjectWithJustRequiredFields(): Promise<void> {
@@ -57,8 +57,8 @@ export class CreateProjects {
   }
 
   async numberOfProjectsIsVisible(number:number): Promise<void> {
-    await this.page.waitForSelector('[data-name="project-container"]')
-    const projectNumber = await this.page.locator('[data-name="project-container"]').count()
+    await this.page.waitForSelector(createProjectSelectors.container.project)
+    const projectNumber = await this.page.locator(createProjectSelectors.container.project).count()
     expect(projectNumber).toBe(number)
     console.log(`There ${projectNumber} projects visible`)
   }
