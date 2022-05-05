@@ -1,6 +1,5 @@
 import { chromium, FullConfig  } from '@playwright/test'
 import actualConfig from  './playwright.config'
-import { login } from "./e2e/fixtures/login"
 
 async function globalSetup(config: FullConfig) {
   const browser = await chromium.launch()
