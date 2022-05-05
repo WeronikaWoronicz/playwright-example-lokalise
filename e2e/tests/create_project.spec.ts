@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test"
 import { Projects } from "../pages/Projects/Projects"
-import { CreateProjects } from "../pages/Project/CreateProject"
+import { CreateProjects } from "../pages/CreateProject/CreateProject"
 import { project } from "../fixtures/project"
 
 test.beforeEach(async ({ page }) => { 

@@ -1,9 +1,9 @@
 import { test, expect} from "@playwright/test"
 import { project } from "../fixtures/project"
 import { Projects } from "../pages/Projects/Projects"
-import { CreateProjects } from "../pages/Project/CreateProject"
+import { CreateProjects } from "../pages/CreateProject/CreateProject"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
-const createProjectSelectors = require("../pages/Project/CreateProjectSelectors")
+const createProjectSelectors = require("../pages/CreateProject/CreateProjectSelectors")
 const keyEditorSelectors = require("../pages/KeyEditor/KeyEditorSelectors")
 
 
@@ -34,9 +34,7 @@ test.describe("Add key", () => {
     await keyEditor.addKey(project.keyId)
 
     // assert (expected results)
-    await page.waitForSelector(keyEditorSelectors.getKeyIdLink(project.keyId))
-    const keyIdVisibility = await page.locator(keyEditorSelectors.getKeyIdLink(project.keyId)).isVisible()
-    expect(keyIdVisibility).toBe(true)
+    await keyEditor.expectThatKeyIsAdded()
     console.log("Key is added")
 
   })

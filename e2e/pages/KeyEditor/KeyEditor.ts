@@ -87,6 +87,15 @@ export class KeyEditor {
     return
   }
 
+// Assertions
+
+  async expectThatKeyIsAdded() : Promise<void> { 
+    await this.page.waitForSelector(keyEditorSelectors.getKeyIdLink(project.keyId))
+    const keyIdVisibility = await this.page.locator(keyEditorSelectors.getKeyIdLink(project.keyId)).isVisible()
+    expect(keyIdVisibility).toBe(true)
+   }
+
+
   async expectThatTranslationValueIsNotNull(rowNumber: number): Promise<void> {
     let dataId = await this.clickOnTranslationRow(rowNumber)
     let translationLocator = this.page.locator(keyEditorSelectors.form.transcell + keyEditorSelectors.getDataId(dataId))
