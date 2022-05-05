@@ -1,5 +1,6 @@
 
-## Technology Standards
+## Technology Stack
+
 - Playwright **latest**
 - Node.js **16.latest**
 
