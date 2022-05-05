@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
   use: {
     storageState: 'storageState.json',
     actionTimeout: 0,
-    baseURL: process.env.STAGING === '1' ? 'https://app.stage.lokalise.cloud': 'https://lokalise.com/',
+    baseURL: process.env.STAGING === '1' ? 'https://app.stage.lokalise.cloud': 'https://app.lokalise.com/',
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
