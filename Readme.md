@@ -26,5 +26,11 @@ $env:NODE_ENV="PRODUCTION";  npx playwright test
 
 To run with a custom credentials set $env:EMAIL & $env:PASSWORD environment variables before running the tests
 
-#TODO: It was not required in the assignment, but adding more users and optimzing login, can increase performance of tests. 
+## Debugging 
 
+* To use Playwright inspector add --debug flag after test command
+* To get more detailed playwright log set $env:DEBUG="pw:api"
+
+## Improvement ideas
+
+* It was not required in the assignment, but adding more users and optimzing login, can increase performance of tests. 
