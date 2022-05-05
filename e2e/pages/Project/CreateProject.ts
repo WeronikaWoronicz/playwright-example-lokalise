@@ -28,9 +28,9 @@ export class CreateProjects {
       .press(createProjectSelectors.input.targetLanguage,createProjectSelectors.key.enter)
 }
 
-  fillProjectName(): Promise<void> {
+  fillProjectName(name: string): Promise<void> {
     return this.page
-      .fill(createProjectSelectors.input.projectName, project.name)
+      .fill(createProjectSelectors.input.projectName, name)
   }
 
   fillTargetOneLanguage(): Promise<void> {
@@ -38,8 +38,8 @@ export class CreateProjects {
       .fill(createProjectSelectors.input.targetLanguage, project.language)  
   }
 
-  async createProjectWithJustRequiredFields(): Promise<void> {
-      await this.fillProjectName()
+  async createProjectWithJustRequiredFields(name: string): Promise<void> {
+      await this.fillProjectName(name)
       await this.fillTargetOneLanguage()
       await this.confirmTargetOneLanguage()
       await this.clickProceedToCreateProjectBtn()
@@ -48,9 +48,9 @@ export class CreateProjects {
 
 //Assertions
 
-  async expectThatCreatedProjectIsVisible(): Promise<void> {
+  async expectThatCreatedProjectIsVisible(name: string): Promise<void> {
     await this.page.waitForNavigation()
-    const projectIsVisible = await this.page.isVisible(createProjectSelectors.getProjectLink(project.name))
+    const projectIsVisible = await this.page.isVisible(createProjectSelectors.getProjectLink(name))
     expect(projectIsVisible).toBe(true)
      console.log('Project\'s is created and project\'s page is opened')
     return
