@@ -20,7 +20,7 @@ npx playwright test
 To run on PRODUCTION
 
 ```
-$env:STAGING=0; npx playwright test 
+$env:NODE_ENV="PRODUCTION";  npx playwright test
 ```
 
 To run with a custom credentials set $env:EMAIL & $env:PASSWORD environment variables before running the tests

@@ -3,6 +3,11 @@ import { devices } from "@playwright/test"
 import dotenv from 'dotenv';
 import path from 'path';
 
+const urlDict = {
+  STAGING: 'https://app.stage.lokalise.cloud',
+  PRODUCTION: 'https://app.lokalise.com'
+}
+
 dotenv.config();
 
 /**
@@ -15,7 +20,7 @@ const config: PlaywrightTestConfig = {
   use: {
     storageState: 'storageState.json',
     actionTimeout: 0,
-    baseURL: process.env.STAGING === '1' ? 'https://app.stage.lokalise.cloud': 'https://app.lokalise.com/',
+    baseURL: urlDict[process.env.NODE_ENV],
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://localhost:3000',
 
