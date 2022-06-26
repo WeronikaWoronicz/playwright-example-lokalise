@@ -10,13 +10,9 @@ export class Projects {
     this.page = page
   }
 
-  navigate(): Promise<Response | null> {
-    return this.page.goto("/projects") 
+  navigate(urlPath: string): Promise<Response | null> {
+    return this.page.goto(urlPath) 
   }
-
-  navigateFromProjectToProjects(): Promise<void> {
-    return this.page.locator(projectsSelectors.link.projects).click()
-}
 
   async removeAllProjects(): Promise<void> {
     while (await this.page.locator(projectsSelectors.button.more).isVisible()) {

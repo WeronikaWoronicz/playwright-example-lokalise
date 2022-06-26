@@ -3,26 +3,28 @@ import { project } from "../fixtures/project"
 import { Projects } from "../pages/Projects/Projects"
 import { CreateProjects } from "../pages/CreateProject/CreateProject"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
+import { LokaliseApiHelper, ApiHelper } from "../lib/lokaliseApiHelper"  
 const createProjectSelectors = require("../pages/CreateProject/CreateProjectSelectors")
 const keyEditorSelectors = require("../pages/KeyEditor/KeyEditorSelectors")
 
 
 
 test.beforeEach(async ({ page }) => {
-  const projects = new Projects(page)
-  const createProject = new CreateProjects(page)
+const projects = new Projects(page)
+  // const createProjectPage = new CreateProjects(page)
 
-  await projects.navigate()
-  await projects.removeAllProjects()
-  await createProject.clickCreateFirstProjectBtn()
-  await createProject.createProjectWithJustRequiredFields(project.name)
+  const apiHelper: ApiHelper = new LokaliseApiHelper(process.env.API_KEY)
+
+  await apiHelper.removeAllProjects()
+  const newProject = await apiHelper.createProject(project.name)
+  await projects.navigate(`/project/${newProject.project_id}/`)
 })
 
 test.afterAll(async ({ page }) => {
   const projects = new Projects(page)
+  const apiHelper: ApiHelper = new LokaliseApiHelper(process.env.API_KEY)
   
-  await projects.navigate()
-  await projects.removeAllProjects()
+  await apiHelper.removeAllProjects()
 })
 
 test.describe("Add key", () => {

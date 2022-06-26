@@ -10,6 +10,12 @@
 ```
 npm install
 ```
+## Create account and generate API Token :
+
+Create your account on [Lokalise webpage](https://app.lokalise.com/). 
+Next go to Profile Settings -> API tokens and create a new read + write API Token. 
+Set your credentials and API_KEY in env file.
+
 
 ## Command to run tests 
 
@@ -33,4 +39,4 @@ To run with a custom credentials set $env:EMAIL & $env:PASSWORD environment vari
 
 ## Improvement ideas
 
-* It was not required in the assignment, but adding more users and optimzing login, can increase performance of tests. 
+* It was not required in the assignment, but adding more users and optimzing login, can increase performance of tests.
