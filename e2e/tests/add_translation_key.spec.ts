@@ -1,9 +1,8 @@
 import { test, expect} from "@playwright/test"
 import { project } from "../fixtures/project"
 import { Projects } from "../pages/Projects/Projects"
-import { CreateProjects } from "../pages/CreateProject/CreateProject"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
-import { LokaliseApiHelper, ApiHelper } from "../lib/lokaliseApiHelper"  
+import { LokaliseApiHelper, ApiHelper } from "../lib/LokaliseApiHelper"  
 const createProjectSelectors = require("../pages/CreateProject/CreateProjectSelectors")
 const keyEditorSelectors = require("../pages/KeyEditor/KeyEditorSelectors")
 

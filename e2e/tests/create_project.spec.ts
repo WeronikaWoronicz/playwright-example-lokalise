@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test"
 import { Projects } from "../pages/Projects/Projects"
 import { CreateProjects } from "../pages/CreateProject/CreateProject"
 import { project } from "../fixtures/project"
-import { LokaliseApiHelper, ApiHelper } from "../lib/lokaliseApiHelper"
+import { LokaliseApiHelper, ApiHelper } from "../lib/LokaliseApiHelper"
 
 test.beforeEach(async ({ page }) => {
   const projects = new Projects(page)
