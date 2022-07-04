@@ -1,3 +1,4 @@
+[![nightly](https://github.com/WeronikaWoronicz/playwright-example-lokalise/actions/workflows/nightly.yml/badge.svg?branch=main)](https://github.com/WeronikaWoronicz/playwright-example-lokalise/actions/workflows/nightly.yml)
 
 ## Technology Stack
 
@@ -39,4 +40,4 @@ To run with a custom credentials set $env:EMAIL & $env:PASSWORD environment vari
 
 ## Improvement ideas
 
-* It was not required in the assignment, but adding more users and optimzing login, can increase performance of tests.
+Adding more users and optimzing login, can increase performance of tests. Also would be great to add test data injection, to make project more scalable.
