@@ -1,0 +1,29 @@
+{
+    "projects":
+    [
+        {
+            "name": "Project loaded from file",
+            "language": "English (en)"
+        }
+    ],
+
+    "translations":[
+        {  
+            "platform": "Android",
+            "key": "furry_cat",
+            "baseSingular": "cat",
+            "basePlural": "cats",
+            "translationSingular": "el gato",
+            "translationPlural": "los gatos"
+        },
+        {   
+            "platform": "Android",
+            "key": "sleepy_dog",
+            "baseSingular": "dog",
+            "basePlural": "dogs",
+            "translationSingular": "el perro",
+            "translationPlural": "los perros"
+        }
+    ]
+
+}
