@@ -1,7 +1,7 @@
 import { ProjectData } from "./ProjectData"
 import { TranslationData } from "./TranslationData"
-import { JsonDataFactory } from "./JsonDataFactory";
-import { FakerDataFactory } from "./FakerDataFactory";
+import { JsonDataFactory } from "./JsonDataFactory"
+import { FakerDataFactory } from "./FakerDataFactory"
 
 export interface DataFactory {
     getProject: () => ProjectData
@@ -10,5 +10,5 @@ export interface DataFactory {
 
 const testDatapath = process.env.TEST_DATA_PATH
 export const DataFactory: DataFactory = testDatapath === undefined ?
-    new FakerDataFactory()
-    : new JsonDataFactory(testDatapath)
+	new FakerDataFactory()
+	: new JsonDataFactory(testDatapath)

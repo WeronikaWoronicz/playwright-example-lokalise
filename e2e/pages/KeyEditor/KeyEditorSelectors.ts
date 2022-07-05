@@ -16,41 +16,41 @@ type KeyEditorSelectors = {
 }
 
 const keyEditorSelectors: KeyEditorSelectors = {
-    buttons: {
-      addKey: '#btn_addkey',
-      addFirstKey: '[aria-label="Add first key"]',
-    },
-    input: {
-         keyID: '#keyName',
-         platformSelect: '#s2id_autogen6',
-    },
-    keyShortcuts: {
-        firstTranslation: "Alt+1",
-        enter: "Enter",
-    },
-    pluralForm: {
-        one: 'one',
-        other: 'other',
-    },
-    switches: {
-        default: '[class="bootstrap-switch-handle-off bootstrap-switch-default"]'
-    },
-    save: {
-        alt: '[alt="save"]'
-    },
-    tab: {
-        advanced: '#advanced_tab',
-    },
-    form: {
-           transcell: '#transcell-',
-           trRow: 'tr.row-trans.translation',
-           line: '[class="CodeMirror-line"]'
-        }, 
-    getKeyIdLink: (keyId: string) => `a:text("${keyId}")`,      
-    getDataId: (dataId: number) => `${dataId}`,
-    getNth: (nth: number) => ` >> nth=${nth}`,
-    getPluralForm: (form: string) => `[data-lokalise-editor-plural="${form}"]`,
-    getRowNumber: (rowNumber: number) => `:nth-child(${rowNumber})`,    
+	buttons: {
+		addKey: "#btn_addkey",
+		addFirstKey: "[aria-label=\"Add first key\"]",
+	},
+	input: {
+		keyID: "#keyName",
+		platformSelect: "#s2id_autogen6",
+	},
+	keyShortcuts: {
+		firstTranslation: "Alt+1",
+		enter: "Enter",
+	},
+	pluralForm: {
+		one: "one",
+		other: "other",
+	},
+	switches: {
+		default: "[class=\"bootstrap-switch-handle-off bootstrap-switch-default\"]"
+	},
+	save: {
+		alt: "[alt=\"save\"]"
+	},
+	tab: {
+		advanced: "#advanced_tab",
+	},
+	form: {
+		transcell: "#transcell-",
+		trRow: "tr.row-trans.translation",
+		line: "[class=\"CodeMirror-line\"]"
+	}, 
+	getKeyIdLink: (keyId: string) => `a:text("${keyId}")`,      
+	getDataId: (dataId: number) => `${dataId}`,
+	getNth: (nth: number) => ` >> nth=${nth}`,
+	getPluralForm: (form: string) => `[data-lokalise-editor-plural="${form}"]`,
+	getRowNumber: (rowNumber: number) => `:nth-child(${rowNumber})`,    
 }
 
 module.exports = keyEditorSelectors
