@@ -25,13 +25,15 @@ To run the tests on STAGING
 npx playwright test 
 ```
 
-To run on PRODUCTION
+To run on env set up NODE_ENV, for example:
 
 ```
 $env:NODE_ENV="PRODUCTION";  npx playwright test
 ```
 
 To run with a custom credentials set $env:EMAIL & $env:PASSWORD environment variables before running the tests
+
+To run test with data from JSON, set TEST_DATA_PATH. One example-test-data.json is added in project. If you don't set it, it will use DataFactory.ts   
 
 ## Debugging 
 
