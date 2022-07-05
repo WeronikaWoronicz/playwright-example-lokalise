@@ -1,5 +1,4 @@
 import type { Page, Response } from "@playwright/test"
-import { project } from "../../fixtures/project"
 const projectsSelectors = require("./ProjectsSelectors")
 
 export class Projects {

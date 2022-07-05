@@ -1,78 +1,72 @@
-import { test, expect} from "@playwright/test"
-import { project } from "../fixtures/project"
+import { test, expect } from "@playwright/test"
 import { Projects } from "../pages/Projects/Projects"
 import { KeyEditor } from "../pages/KeyEditor/KeyEditor"
-import { LokaliseApiHelper, ApiHelper } from "../lib/LokaliseApiHelper"  
+import { DataFactory } from "../fixtures/DataFactory"
+import { LokaliseApiHelper, ApiHelper } from "../lib/LokaliseApiHelper"
 const createProjectSelectors = require("../pages/CreateProject/CreateProjectSelectors")
-const keyEditorSelectors = require("../pages/KeyEditor/KeyEditorSelectors")
 
-
+let projects: Projects
+let keyEditor: KeyEditor
+const apiHelper: ApiHelper = new LokaliseApiHelper(process.env.API_KEY)
+let projectData = DataFactory.getProject()
 
 test.beforeEach(async ({ page }) => {
-const projects = new Projects(page)
-  // const createProjectPage = new CreateProjects(page)
-
-  const apiHelper: ApiHelper = new LokaliseApiHelper(process.env.API_KEY)
+  projects = new Projects(page)
+  keyEditor = new KeyEditor(page)
 
   await apiHelper.removeAllProjects()
-  const newProject = await apiHelper.createProject(project.name)
+  const newProject = await apiHelper.createProject(projectData.name)
   await projects.navigate(`/project/${newProject.project_id}/`)
 })
 
 test.afterAll(async ({ page }) => {
-  const projects = new Projects(page)
-  const apiHelper: ApiHelper = new LokaliseApiHelper(process.env.API_KEY)
-  
   await apiHelper.removeAllProjects()
 })
 
 test.describe("Add key", () => {
   test("first key should be added in key editor", async ({ page }) => {
-    const keyEditor = new KeyEditor(page)
+    const translationData = DataFactory.getTranslation(projectData)
 
     // act (steps)
-    await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey(project.keyId)
+    await keyEditor.clickAddFirstKeyBtn()
+    await keyEditor.addKey(translationData.key, translationData.platform)
 
     // assert (expected results)
-    await keyEditor.expectThatKeyIsAdded()
+    await keyEditor.expectThatKeyIsAdded(translationData.key)
     console.log("Key is added")
 
   })
 
   test("translation for plain key should be added", async ({ page }) => {
-    const keyEditor = new KeyEditor(page)
+    const translationData = DataFactory.getTranslation(projectData)
 
     // arrange (preconditions)
-    await keyEditor.clickAddFirstKey()
-    await keyEditor.addKey(project.keyId)
-    await page.isVisible(createProjectSelectors.getProjectLink(project.name))
+    await keyEditor.clickAddFirstKeyBtn()
+    await keyEditor.addKey(translationData.key, translationData.platform)
+    await page.isVisible(createProjectSelectors.getProjectLink(projectData.name))
 
     // act (steps)
-    await keyEditor.clickAndTypeKeyValue(1, project.toTranslate)
+    await keyEditor.clickAndTypeKeyValue(1, translationData.key)
     await keyEditor.selectFirstTranslationByKey(2)
 
     // assert (expected results)
     await keyEditor.expectThatTranslationValueIsNotNull(2)
     console.log('Translation is added')
-   
+
   })
 
   test("translation for plural key should be added", async ({ page }) => {
-    const keyEditor = new KeyEditor(page)
-    
+    const translationData = DataFactory.getTranslation(projectData)
+
     // arrange (preconditions)
-    await keyEditor.clickAddFirstKey()
-    await keyEditor.addPluralKey(project.keyId)
+    await keyEditor.clickAddFirstKeyBtn()
+    await keyEditor.addPluralKey(translationData.key, translationData.platform)
 
     // act (steps)
-    await keyEditor.addPluralTranslation(0, project.pluralToTranslateOne, keyEditorSelectors.pluralForm.one)
-    await keyEditor.addPluralTranslation(0, project.pluralToTranslateOther, keyEditorSelectors.pluralForm.other)
-    await keyEditor.addPluralTranslation(1, project.pluralTranslationOne, keyEditorSelectors.pluralForm.one)
-    await keyEditor.addPluralTranslation(1, project.pluralTranslationOther, keyEditorSelectors.pluralForm.other)
+    await keyEditor.addPluralTranslation(translationData)
 
     // assert (expected results)
-    await keyEditor.expectThatPluralTranslationIsAdded(1, project.pluralTranslationOne, project.pluralTranslationOther,keyEditorSelectors.pluralForm.one, keyEditorSelectors.pluralForm.other )
+    await keyEditor.expectPluralTranslationToExist(translationData)
     console.log('Plural translation is added')
   })
 })

@@ -1,6 +1,6 @@
 import type { Page, Response } from "@playwright/test"
-import { project } from "../../fixtures/project"
 import { expect } from "@playwright/test"
+import { ProjectData } from "../../fixtures/ProjectData"
 const createProjectSelectors = require("./CreateProjectSelectors")
 
 export class CreateProjects {
@@ -19,11 +19,11 @@ export class CreateProjects {
     return this.page.click(createProjectSelectors.buttons.newProject)
   }
 
-  clickProceedToCreateProjectBtn(): Promise<void> {
+  clickProceedBtn(): Promise<void> {
     return this.page.click(createProjectSelectors.buttons.proceed)
   }
 
-  confirmTargetOneLanguage(): Promise<void> {
+  confirmTargetLanguage(): Promise<void> {
     return this.page
       .press(createProjectSelectors.input.targetLanguage,createProjectSelectors.key.enter)
 }
@@ -33,22 +33,22 @@ export class CreateProjects {
       .fill(createProjectSelectors.input.projectName, name)
   }
 
-  fillTargetOneLanguage(): Promise<void> {
+  fillTargetLanguage(language: string): Promise<void> {
     return this.page
-      .fill(createProjectSelectors.input.targetLanguage, project.language)  
+      .fill(createProjectSelectors.input.targetLanguage, language)  
   }
 
-  async createProjectWithJustRequiredFields(name: string): Promise<void> {
-      await this.fillProjectName(name)
-      await this.fillTargetOneLanguage()
-      await this.confirmTargetOneLanguage()
-      await this.clickProceedToCreateProjectBtn()
+  async createProject(project: ProjectData): Promise<void> {
+      await this.fillProjectName(project.name)
+      await this.fillTargetLanguage(project.language)
+      await this.confirmTargetLanguage()
+      await this.clickProceedBtn()
       return
   }
 
 //Assertions
 
-  async expectThatCreatedProjectIsVisible(name: string): Promise<void> {
+  async expectProjectToBeVisible(name: string): Promise<void> {
     await this.page.waitForNavigation()
     const projectIsVisible = await this.page.isVisible(createProjectSelectors.getProjectLink(name))
     expect(projectIsVisible).toBe(true)
@@ -56,10 +56,10 @@ export class CreateProjects {
     return
   }
 
-  async expectNumberOfProjectsVisibleIs(number:number): Promise<void> {
+  async expectNumberOfProjectsVisibleToBe(count:number): Promise<void> {
     await this.page.waitForSelector(createProjectSelectors.container.project)
     const projectNumber = await this.page.locator(createProjectSelectors.container.project).count()
-    expect(projectNumber).toBe(number)
+    expect(projectNumber).toBe(count)
     console.log(`Number of projects visible: ${projectNumber}`)
   }
 

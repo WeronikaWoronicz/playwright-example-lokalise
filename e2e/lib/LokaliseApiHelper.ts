@@ -1,4 +1,3 @@
-import faker, { Faker } from '@faker-js/faker'
 import { LokaliseApi } from '@lokalise/node-api'
 
 export interface ApiHelper {
