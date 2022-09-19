@@ -7,8 +7,8 @@ async function globalSetup(config: FullConfig) {
 	await page.goto("/")
 	await page
 		.fill("[placeholder=\"user\\@company\\.com\"]", process.env.EMAIL)
-	await page.click("[placeholder=\"password\"]")
-	await page.fill("[placeholder=\"password\"]", process.env.PASSWORD)
+	await page.click("[placeholder=\"Password\"]")
+	await page.fill("[placeholder=\"Password\"]", process.env.PASSWORD)
 	await Promise.all([
 		page.waitForNavigation(),
 		page.click("button:has-text(\"Log in\")"),
